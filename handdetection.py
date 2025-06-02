@@ -53,17 +53,14 @@ with mp_hands.Hands(
         coord_WRIST_X = int((1 - WRIST.x) * cap_frame_width)
         coord_WRIST_Y = int(WRIST.y * cap_frame_height)
         # print camera resolution for debugging purpose
-        print("Width:", cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        print("Height:", cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        #print("Width:", cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        #print("Height:", cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
         # output coordinates of landmark 9 to terminal
-        print("MIDDLE_FINGER_MCP:")
-        print("x:", coord_MIDDLE_FINGER_MCP_X)
-        print("y:", coord_MIDDLE_FINGER_MCP_Y)
-        print("Wrist:")
-        print("x:", coord_WRIST_X)
-        print("y:", coord_WRIST_Y)
-        print()
+        print("MIDDLE_FINGER_MCP:\nx: {} \ny: {} \n".format(coord_MIDDLE_FINGER_MCP_X,coord_MIDDLE_FINGER_MCP_Y))
+        #print("x:", coord_MIDDLE_FINGER_MCP_X)
+        #print("y:", coord_MIDDLE_FINGER_MCP_Y)
+        print("WRIST:\nx: {} \ny: {} \n".format(coord_WRIST_X,coord_WRIST_Y))
 
         # draw landmarks on screen
         #mp_drawing.draw_landmarks(
@@ -73,7 +70,7 @@ with mp_hands.Hands(
         #    mp_drawing_styles.get_default_hand_landmarks_style(),
         #    mp_drawing_styles.get_default_hand_connections_style())
     # flip the image horizontally for a selfie-view display.
-    cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
+    cv2.imshow('Handdetection Camera Output', cv2.flip(image, 1))
     if cv2.waitKey(5) & 0xFF == 27:
         break
 cv2.destroyAllWindows()
