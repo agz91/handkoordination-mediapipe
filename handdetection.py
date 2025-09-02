@@ -4,12 +4,13 @@
 import cv2
 import mediapipe as mp
 import time
+import Hand_Class
+from Hand_Class import Hand
 #mp_drawing = mp.solutions.drawing_utils
 #mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 cap_frame_width = 1920
 cap_frame_height = 1080
-
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_frame_width)
@@ -58,9 +59,8 @@ with mp_hands.Hands(
 
         # output coordinates of landmark 9 to terminal
         print("MIDDLE_FINGER_MCP:\nx: {} \ny: {} \n".format(coord_MIDDLE_FINGER_MCP_X,coord_MIDDLE_FINGER_MCP_Y))
-        #print("x:", coord_MIDDLE_FINGER_MCP_X)
-        #print("y:", coord_MIDDLE_FINGER_MCP_Y)
         print("WRIST:\nx: {} \ny: {} \n".format(coord_WRIST_X,coord_WRIST_Y))
+
 
         # draw landmarks on screen
         #mp_drawing.draw_landmarks(
