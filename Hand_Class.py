@@ -8,6 +8,12 @@ class Hand:
     def __init__(self, THUMB_MCP):
         self.THUMB_MCP = THUMB_MCP
 
+    def __init__(self, THUMB_IP):
+        self.THUMB_MCP = THUMB_IP
+
+    def __init__(self, INDEX_FINGER_MCP):
+        self.MIDDLE_FINGER_MCP = INDEX_FINGER_MCP
+
     def __init__(self, INDEX_FINGER_PIP):
         self.INDEX_FINGER_PIP = INDEX_FINGER_PIP
 

@@ -1,14 +1,15 @@
-#Source https://mediapipe.readthedocs.io/en/latest/solutions/hands.html
-#github test
-
 import cv2
 import mediapipe as mp
 import time
 import Hand_Class
 from Hand_Class import Hand
+
+#tools needed to visualize land handmarks
 #mp_drawing = mp.solutions.drawing_utils
 #mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
+
+#adjust according to camera
 cap_frame_width = 1920
 cap_frame_height = 1080
 
@@ -42,11 +43,12 @@ with mp_hands.Hands(
       for hand_landmarks in results.multi_hand_landmarks:
         time.sleep(0.1)
         # assign scale coordinate of landmark 9 (MIDDLE_FINGER_MCP) to variable
-        # mp outputs hand coordinates on a scale of 0-1, 0 being one side if the screen, 1 the other.
+        # mp outputs hand coordinates on a scale of 0-1, 0 being one side of the screen, 1 the other.
         # both x and y coordinates are converted to pixels on the output image, in accordance with the
         # actual cap_frame_width/height as reported by cap.get
         MIDDLE_FINGER_MCP = hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP]
         WRIST = hand_landmarks.landmark[mp_hands.HandLandmark.WRIST]
+
         # calculate pixel on screen in relation to coordinate of hand (scale 0-1) (as whole number)
         coord_MIDDLE_FINGER_MCP_X = int((1 - MIDDLE_FINGER_MCP.x) * cap_frame_width)
         coord_MIDDLE_FINGER_MCP_Y = int(MIDDLE_FINGER_MCP.y * cap_frame_height)
