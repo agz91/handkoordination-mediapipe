@@ -12,6 +12,7 @@ mp_hands = mp.solutions.hands
 #adjust according to camera
 cap_frame_width = 1920
 cap_frame_height = 1080
+counter = 0
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_frame_width)
@@ -46,8 +47,11 @@ with mp_hands.Hands(
         # mp outputs hand coordinates on a scale of 0-1, 0 being one side of the screen, 1 the other.
         # both x and y coordinates are converted to pixels on the output image, in accordance with the
         # actual cap_frame_width/height as reported by cap.get
+
+        counter += 1
         MIDDLE_FINGER_MCP = hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP]
         WRIST = hand_landmarks.landmark[mp_hands.HandLandmark.WRIST]
+        HANDEDNESS = results.multi_handedness
 
         # calculate pixel on screen in relation to coordinate of hand (scale 0-1) (as whole number)
         coord_MIDDLE_FINGER_MCP_X = int((1 - MIDDLE_FINGER_MCP.x) * cap_frame_width)
@@ -60,7 +64,9 @@ with mp_hands.Hands(
         #print("Height:", cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
         # output coordinates of landmark 9 to terminal
-        print("MIDDLE_FINGER_MCP:\nx: {} \ny: {} \n".format(coord_MIDDLE_FINGER_MCP_X,coord_MIDDLE_FINGER_MCP_Y))
+        print("Counter:", counter)
+        print(HANDEDNESS)
+        print("MIDDLE_FINGER_MCP:\nx: {} \ny: {}".format(coord_MIDDLE_FINGER_MCP_X,coord_MIDDLE_FINGER_MCP_Y))
         print("WRIST:\nx: {} \ny: {} \n".format(coord_WRIST_X,coord_WRIST_Y))
 
 
