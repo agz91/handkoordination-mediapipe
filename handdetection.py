@@ -1,8 +1,12 @@
 import cv2
 import mediapipe as mp
 import time
+import pygame
 import Hand_Class
 from Hand_Class import Hand
+import Design_Class
+from Design_Class import Design
+
 
 #tools needed to visualize land handmarks
 #mp_drawing = mp.solutions.drawing_utils
