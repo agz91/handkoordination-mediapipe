@@ -13,6 +13,8 @@ mp_hands = mp.solutions.hands
 cap_frame_width = 1920
 cap_frame_height = 1080
 counter = 0
+state = 0
+
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_frame_width)
@@ -35,6 +37,7 @@ with mp_hands.Hands(
     # pass by reference.
     image.flags.writeable = False
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = cv2.flip(image, 1)
     results = hands.process(image)
 
     # Draw the hand annotations on the image.
@@ -63,11 +66,37 @@ with mp_hands.Hands(
         #print("Width:", cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         #print("Height:", cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-        # output coordinates of landmark 9 to terminal
-        print("Counter:", counter)
+        #HANDEDNESS_list = HANDEDNESS.splitlines()
+        #HANDEDNESS_list_count = HANDEDNESS.count("classification")
+        HANDEDNESS = str(HANDEDNESS)
+        HANDEDNESS_length = len(HANDEDNESS)
         print(HANDEDNESS)
-        print("MIDDLE_FINGER_MCP:\nx: {} \ny: {}".format(coord_MIDDLE_FINGER_MCP_X,coord_MIDDLE_FINGER_MCP_Y))
-        print("WRIST:\nx: {} \ny: {} \n".format(coord_WRIST_X,coord_WRIST_Y))
+        #HANDEDNESS_label_position1 = HANDEDNESS.find("label:")
+        #print(HANDEDNESS_length)
+        #print(HANDEDNESS_label_position1)
+        if HANDEDNESS_length >= 100:
+          x = HANDEDNESS.split("}",1)
+          state = 3
+          #print(HANDEDNESS_length)
+          #print("\n")
+          #print(x)
+          #print("SEPERATED LIST")
+          #print(x[0])
+          #print("#################\n")
+          #print(x[1])
+          #print("NEW LIST\n")
+        elif HANDEDNESS.find("Left") != -1:
+          state = 2
+          
+        elif HANDEDNESS.find("Right") != -1:
+          state = 1
+        else:
+          state = 0
+        # output coordinates of landmark 9 to terminal
+        #print("Counter:", counter)
+        #print(HANDEDNESS)
+        #print("MIDDLE_FINGER_MCP:\nx: {} \ny: {}".format(coord_MIDDLE_FINGER_MCP_X,coord_MIDDLE_FINGER_MCP_Y))
+        #print("WRIST:\nx: {} \ny: {} \n".format(coord_WRIST_X,coord_WRIST_Y))
 
 
         # draw landmarks on screen
@@ -78,7 +107,7 @@ with mp_hands.Hands(
         #    mp_drawing_styles.get_default_hand_landmarks_style(),
         #    mp_drawing_styles.get_default_hand_connections_style())
     # flip the image horizontally for a selfie-view display.
-    cv2.imshow('Handdetection Camera Output', cv2.flip(image, 1))
+    cv2.imshow('Handdetection Camera Output', image)
     if cv2.waitKey(5) & 0xFF == 27:
         break
 cv2.destroyAllWindows()
