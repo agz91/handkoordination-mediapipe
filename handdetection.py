@@ -14,7 +14,13 @@ cap_frame_width = 1920
 cap_frame_height = 1080
 counter = 0
 state = 0
-
+INDEX_FINGER_TIP_compare1_X = 0
+INDEX_FINGER_TIP_compare1_Y = 0
+INDEX_FINGER_TIP_compare2_X = 0
+INDEX_FINGER_TIP_compare2_Y = 0
+statex = False
+statey = False
+statez = False
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_frame_width)
@@ -54,49 +60,63 @@ with mp_hands.Hands(
         counter += 1
         MIDDLE_FINGER_MCP = hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP]
         WRIST = hand_landmarks.landmark[mp_hands.HandLandmark.WRIST]
+        INDEX_FINGER_TIP = hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP]
         HANDEDNESS = results.multi_handedness
 
         # calculate pixel on screen in relation to coordinate of hand (scale 0-1) (as whole number)
         coord_MIDDLE_FINGER_MCP_X = int((1 - MIDDLE_FINGER_MCP.x) * cap_frame_width)
         coord_MIDDLE_FINGER_MCP_Y = int(MIDDLE_FINGER_MCP.y * cap_frame_height)
 
+        coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * cap_frame_width)
+        coord_INDEX_FINGER_TIP_Y = int(INDEX_FINGER_TIP.y * cap_frame_height)
+
         coord_WRIST_X = int((1 - WRIST.x) * cap_frame_width)
         coord_WRIST_Y = int(WRIST.y * cap_frame_height)
-        # print camera resolution for debugging purpose
-        #print("Width:", cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        #print("Height:", cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-        #HANDEDNESS_list = HANDEDNESS.splitlines()
-        #HANDEDNESS_list_count = HANDEDNESS.count("classification")
         HANDEDNESS = str(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
-        print(HANDEDNESS)
-        #HANDEDNESS_label_position1 = HANDEDNESS.find("label:")
-        #print(HANDEDNESS_length)
-        #print(HANDEDNESS_label_position1)
         if HANDEDNESS_length >= 100:
           x = HANDEDNESS.split("}",1)
           state = 3
-          #print(HANDEDNESS_length)
-          #print("\n")
-          #print(x)
-          #print("SEPERATED LIST")
-          #print(x[0])
-          #print("#################\n")
-          #print(x[1])
-          #print("NEW LIST\n")
         elif HANDEDNESS.find("Left") != -1:
-          state = 2
-          
+          state = 2  
         elif HANDEDNESS.find("Right") != -1:
           state = 1
         else:
           state = 0
         # output coordinates of landmark 9 to terminal
-        #print("Counter:", counter)
-        #print(HANDEDNESS)
+        print("Counter:", counter)
+        print(state)
         #print("MIDDLE_FINGER_MCP:\nx: {} \ny: {}".format(coord_MIDDLE_FINGER_MCP_X,coord_MIDDLE_FINGER_MCP_Y))
         #print("WRIST:\nx: {} \ny: {} \n".format(coord_WRIST_X,coord_WRIST_Y))
+        print("INDEX_FINGER_TIP:\nx: {} \ny: {}".format(coord_INDEX_FINGER_TIP_X,coord_INDEX_FINGER_TIP_Y))
+
+        if counter % 2 == 0:
+          INDEX_FINGER_TIP_compare1_X = coord_INDEX_FINGER_TIP_X
+          INDEX_FINGER_TIP_compare1_Y = coord_INDEX_FINGER_TIP_Y
+
+          print(INDEX_FINGER_TIP_compare1_X)
+        elif counter % 2 == 1:
+          INDEX_FINGER_TIP_compare2_X = coord_INDEX_FINGER_TIP_X
+          INDEX_FINGER_TIP_compare2_Y = coord_INDEX_FINGER_TIP_Y
+          print(INDEX_FINGER_TIP_compare2_X)
+
+        if((abs(INDEX_FINGER_TIP_compare1_X-INDEX_FINGER_TIP_compare2_X)) <= 20 and state == 3):
+          statex = True
+        else:
+          statex = False
+
+        if((abs(INDEX_FINGER_TIP_compare1_Y-INDEX_FINGER_TIP_compare2_Y)) <= 20 and state == 3):
+          statey = True
+        else:
+          statey = False
+
+        print("State X: ",INDEX_FINGER_TIP_compare1_X," - ",INDEX_FINGER_TIP_compare2_X," = ",statex)
+        print("State Y: ",INDEX_FINGER_TIP_compare1_Y," - ",INDEX_FINGER_TIP_compare2_Y," = ",statey)
+
+
+        
+
 
 
         # draw landmarks on screen
