@@ -2,7 +2,6 @@ import cv2
 import mediapipe as mp
 import time
 import Hand_Class
-from Hand_Class import Hand
 
 #tools needed to visualize land handmarks
 #mp_drawing = mp.solutions.drawing_utils
@@ -16,11 +15,13 @@ counter = 0
 state = 0
 INDEX_FINGER_TIP_compare1_X = 0
 INDEX_FINGER_TIP_compare1_Y = 0
+#INDEX_FINGER_TIP_compare1_Z = 0
 INDEX_FINGER_TIP_compare2_X = 0
 INDEX_FINGER_TIP_compare2_Y = 0
+#INDEX_FINGER_TIP_compare2_Z = 0
 statex = False
 statey = False
-statez = False
+#statez = False
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_frame_width)
@@ -66,6 +67,8 @@ with mp_hands.Hands(
 
         coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * cap_frame_width)
         coord_INDEX_FINGER_TIP_Y = int(INDEX_FINGER_TIP.y * cap_frame_height)
+        coord_INDEX_FINGER_TIP_Z = INDEX_FINGER_TIP.z
+        print(coord_INDEX_FINGER_TIP_Z)
 
         HANDEDNESS = str(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
@@ -82,16 +85,13 @@ with mp_hands.Hands(
 
         # output coordinates of landmark 9 to terminal
         print("Counter:", counter)
-        print(state)
 
         if counter % 2 == 0:
           INDEX_FINGER_TIP_compare1_X = coord_INDEX_FINGER_TIP_X
           INDEX_FINGER_TIP_compare1_Y = coord_INDEX_FINGER_TIP_Y
-          print(INDEX_FINGER_TIP_compare1_X)
         elif counter % 2 == 1:
           INDEX_FINGER_TIP_compare2_X = coord_INDEX_FINGER_TIP_X
           INDEX_FINGER_TIP_compare2_Y = coord_INDEX_FINGER_TIP_Y
-          print(INDEX_FINGER_TIP_compare2_X)
 
         if((abs(INDEX_FINGER_TIP_compare1_X-INDEX_FINGER_TIP_compare2_X)) <= 20 and state == 3):
           statex = True
