@@ -52,29 +52,24 @@ with mp_hands.Hands(
     if results.multi_hand_landmarks:
       for hand_landmarks in results.multi_hand_landmarks:
         time.sleep(0.1)
+
         # assign scale coordinate of landmark 9 (MIDDLE_FINGER_MCP) to variable
         # mp outputs hand coordinates on a scale of 0-1, 0 being one side of the screen, 1 the other.
         # both x and y coordinates are converted to pixels on the output image, in accordance with the
         # actual cap_frame_width/height as reported by cap.get
 
         counter += 1
-        MIDDLE_FINGER_MCP = hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP]
-        WRIST = hand_landmarks.landmark[mp_hands.HandLandmark.WRIST]
         INDEX_FINGER_TIP = hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP]
         HANDEDNESS = results.multi_handedness
 
         # calculate pixel on screen in relation to coordinate of hand (scale 0-1) (as whole number)
-        coord_MIDDLE_FINGER_MCP_X = int((1 - MIDDLE_FINGER_MCP.x) * cap_frame_width)
-        coord_MIDDLE_FINGER_MCP_Y = int(MIDDLE_FINGER_MCP.y * cap_frame_height)
 
         coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * cap_frame_width)
         coord_INDEX_FINGER_TIP_Y = int(INDEX_FINGER_TIP.y * cap_frame_height)
 
-        coord_WRIST_X = int((1 - WRIST.x) * cap_frame_width)
-        coord_WRIST_Y = int(WRIST.y * cap_frame_height)
-
         HANDEDNESS = str(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
+
         if HANDEDNESS_length >= 100:
           x = HANDEDNESS.split("}",1)
           state = 3
@@ -84,17 +79,14 @@ with mp_hands.Hands(
           state = 1
         else:
           state = 0
+
         # output coordinates of landmark 9 to terminal
         print("Counter:", counter)
         print(state)
-        #print("MIDDLE_FINGER_MCP:\nx: {} \ny: {}".format(coord_MIDDLE_FINGER_MCP_X,coord_MIDDLE_FINGER_MCP_Y))
-        #print("WRIST:\nx: {} \ny: {} \n".format(coord_WRIST_X,coord_WRIST_Y))
-        print("INDEX_FINGER_TIP:\nx: {} \ny: {}".format(coord_INDEX_FINGER_TIP_X,coord_INDEX_FINGER_TIP_Y))
 
         if counter % 2 == 0:
           INDEX_FINGER_TIP_compare1_X = coord_INDEX_FINGER_TIP_X
           INDEX_FINGER_TIP_compare1_Y = coord_INDEX_FINGER_TIP_Y
-
           print(INDEX_FINGER_TIP_compare1_X)
         elif counter % 2 == 1:
           INDEX_FINGER_TIP_compare2_X = coord_INDEX_FINGER_TIP_X
@@ -110,14 +102,9 @@ with mp_hands.Hands(
           statey = True
         else:
           statey = False
-
+        
         print("State X: ",INDEX_FINGER_TIP_compare1_X," - ",INDEX_FINGER_TIP_compare2_X," = ",statex)
         print("State Y: ",INDEX_FINGER_TIP_compare1_Y," - ",INDEX_FINGER_TIP_compare2_Y," = ",statey)
-
-
-        
-
-
 
         # draw landmarks on screen
         #mp_drawing.draw_landmarks(
@@ -126,9 +113,11 @@ with mp_hands.Hands(
         #    mp_hands.HAND_CONNECTIONS,
         #    mp_drawing_styles.get_default_hand_landmarks_style(),
         #    mp_drawing_styles.get_default_hand_connections_style())
+
     # flip the image horizontally for a selfie-view display.
     cv2.imshow('Handdetection Camera Output', image)
     if cv2.waitKey(5) & 0xFF == 27:
         break
+
 cv2.destroyAllWindows()
 cap.release()
