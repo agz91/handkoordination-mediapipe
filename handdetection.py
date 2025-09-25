@@ -30,6 +30,7 @@ cap_frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 cap_frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
 with mp_hands.Hands(
+    static_image_mode=False,
     max_num_hands=2,
     model_complexity=1,
     min_detection_confidence=0.5,
@@ -52,7 +53,6 @@ with mp_hands.Hands(
     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     if results.multi_hand_landmarks:
       for hand_landmarks in results.multi_hand_landmarks:
-        time.sleep(0.1)
 
         # assign scale coordinate of landmark 9 (MIDDLE_FINGER_MCP) to variable
         # mp outputs hand coordinates on a scale of 0-1, 0 being one side of the screen, 1 the other.
