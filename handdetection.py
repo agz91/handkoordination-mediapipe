@@ -19,9 +19,11 @@ INDEX_FINGER_TIP_compare1_Y = 0
 INDEX_FINGER_TIP_compare2_X = 0
 INDEX_FINGER_TIP_compare2_Y = 0
 #INDEX_FINGER_TIP_compare2_Z = 0
+FINGER_COMPARE_TOLERANCE = 20
 statex = False
 statey = False
 #statez = False
+
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_frame_width)
@@ -93,12 +95,12 @@ with mp_hands.Hands(
           INDEX_FINGER_TIP_compare2_X = coord_INDEX_FINGER_TIP_X
           INDEX_FINGER_TIP_compare2_Y = coord_INDEX_FINGER_TIP_Y
 
-        if((abs(INDEX_FINGER_TIP_compare1_X-INDEX_FINGER_TIP_compare2_X)) <= 20 and state == 3):
+        if((abs(INDEX_FINGER_TIP_compare1_X-INDEX_FINGER_TIP_compare2_X)) <= FINGER_COMPARE_TOLERANCE and state == 3):
           statex = True
         else:
           statex = False
 
-        if((abs(INDEX_FINGER_TIP_compare1_Y-INDEX_FINGER_TIP_compare2_Y)) <= 20 and state == 3):
+        if((abs(INDEX_FINGER_TIP_compare1_Y-INDEX_FINGER_TIP_compare2_Y)) <= FINGER_COMPARE_TOLERANCE and state == 3):
           statey = True
         else:
           statey = False
