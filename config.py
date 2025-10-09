@@ -20,17 +20,7 @@ def init():
     global cap
     cap = cv2.VideoCapture(0)
 
-    global INDEX_FINGER_TIP_compare1_X
-    INDEX_FINGER_TIP_compare1_X = 1
 
-    global INDEX_FINGER_TIP_compare2_X
-    INDEX_FINGER_TIP_compare2_X = 1
-
-    global INDEX_FINGER_TIP_compare1_Y
-    INDEX_FINGER_TIP_compare1_Y = 1
-
-    global INDEX_FINGER_TIP_compare2_Y
-    INDEX_FINGER_TIP_compare2_Y = 1
 
 
 

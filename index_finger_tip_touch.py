@@ -1,10 +1,16 @@
 import config
 
-print("Importing gesture_logic module...\n")
+print("Importing INDEX_FINGER_TIP_TOUCH module...\n")
 
 counter = 0 
 
+
+
 def INDEX_FINGER_TIP_TOUCH(Handdetection_results):
+  INDEX_FINGER_TIP_compare1_X = 1
+  INDEX_FINGER_TIP_compare2_X = 1
+  INDEX_FINGER_TIP_compare1_Y = 1
+  INDEX_FINGER_TIP_compare2_Y = 1
   counter = 0
   if Handdetection_results.multi_hand_landmarks:
     for hand_landmarks in Handdetection_results.multi_hand_landmarks:
@@ -35,24 +41,24 @@ def INDEX_FINGER_TIP_TOUCH(Handdetection_results):
 
 
       if counter % 2 == 1:
-        config.INDEX_FINGER_TIP_compare1_X = coord_INDEX_FINGER_TIP_X
-        config.INDEX_FINGER_TIP_compare1_Y = coord_INDEX_FINGER_TIP_Y
+        INDEX_FINGER_TIP_compare1_X = coord_INDEX_FINGER_TIP_X
+        INDEX_FINGER_TIP_compare1_Y = coord_INDEX_FINGER_TIP_Y
       elif counter % 2 == 0:
-        config.INDEX_FINGER_TIP_compare2_X = coord_INDEX_FINGER_TIP_X
-        config.INDEX_FINGER_TIP_compare2_Y = coord_INDEX_FINGER_TIP_Y
+        INDEX_FINGER_TIP_compare2_X = coord_INDEX_FINGER_TIP_X
+        INDEX_FINGER_TIP_compare2_Y = coord_INDEX_FINGER_TIP_Y
 
 
-      if((abs(config.INDEX_FINGER_TIP_compare1_X-config.INDEX_FINGER_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+      if((abs(INDEX_FINGER_TIP_compare1_X-INDEX_FINGER_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
         statex = True
       else:
         statex = False
 
-      if((abs(config.INDEX_FINGER_TIP_compare1_Y-config.INDEX_FINGER_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+      if((abs(INDEX_FINGER_TIP_compare1_Y-INDEX_FINGER_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
         statey = True
       else:
         statey = False
-      print("State X: ",config.INDEX_FINGER_TIP_compare1_X," - ",config.INDEX_FINGER_TIP_compare2_X," = ",statex)
-      print("State Y: ",config.INDEX_FINGER_TIP_compare1_Y," - ",config.INDEX_FINGER_TIP_compare2_Y," = ",statey)
+      print("State X: ",INDEX_FINGER_TIP_compare1_X," - ",INDEX_FINGER_TIP_compare2_X," = ",statex)
+      print("State Y: ",INDEX_FINGER_TIP_compare1_Y," - ",INDEX_FINGER_TIP_compare2_Y," = ",statey)
       if (statex and statey and counter == 2):
         return True
       elif (counter == 2):
