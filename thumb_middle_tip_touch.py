@@ -28,7 +28,7 @@ def THUMB_MIDDLE_TIP_TOUCH(Handdetection_results):
       HANDEDNESS_length = len(HANDEDNESS)
 
       if HANDEDNESS.find("Right") != -1 and HANDEDNESS.find("Left") == -1:
-        pass
+        return False
       else:
         return False
 

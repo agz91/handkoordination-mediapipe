@@ -4,8 +4,6 @@ print("Importing INDEX_THUMB_TIP_TOUCH module...\n")
 
 counter = 0 
 
-
-
 def INDEX_THUMB_TIP_TOUCH(Handdetection_results):
   INDEX_FINGER_TIP_compare_X = 1
   INDEX_FINGER_TIP_compare_Y = 1

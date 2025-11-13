@@ -23,8 +23,6 @@ def detectHand():
         print("Ignoring empty camera frame.")
         continue
 
-      # To improve performance, optionally mark the image as not writeable to
-      # pass by reference.
       image.flags.writeable = False
       image = config.cv2.cvtColor(image, config.cv2.COLOR_BGR2RGB)
       image = config.cv2.flip(image, 1)

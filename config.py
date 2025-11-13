@@ -4,7 +4,7 @@ import cv2
 print("Importing config module...\n")
 
 def init():
-    print("Initializing global variables...")
+    print("Initializing global variables...\n")
     global cap_frame_width
     cap_frame_width = 1920
 

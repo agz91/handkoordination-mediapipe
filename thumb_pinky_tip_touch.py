@@ -41,7 +41,7 @@ def THUMB_PINKY_TIP_TOUCH(Handdetection_results):
         statey = True
       else:
         statey = False
-      print("State X: ",coord_PINKY_TIP_X," - ",coord_PINKY_TIP_X," = ",statex)
+      print("State X: ",coord_PINKY_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
       print("State Y: ",coord_PINKY_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
       if (statex and statey):
         return True
