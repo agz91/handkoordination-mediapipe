@@ -12,7 +12,7 @@ def init():
     cap_frame_height = 1080
 
     global FINGER_COMPARE_TOLERANCE
-    FINGER_COMPARE_TOLERANCE = 50
+    FINGER_COMPARE_TOLERANCE = 60
 
     global mp_hands
     mp_hands = mp.solutions.hands
