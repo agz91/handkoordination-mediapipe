@@ -8,6 +8,7 @@ def gesture_logic(picture_id, Handdetection_results):
   INDEX_FINGER_TIP_compare1_Y = 1
   INDEX_FINGER_TIP_compare2_Y = 1
   counter = 0
+  print(Handdetection_results.multi_hand_landmarks)
   match picture_id:
     case 1:
       # right: thumb, pinky
@@ -399,16 +400,16 @@ def gesture_logic(picture_id, Handdetection_results):
           state = 0
         elif (HANDEDNESS_list[0].find("Left") != -1):
           state = 1
-
+ 
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
           print(hand_landmarks)
           print("END SINGLE HAND")
-
+ 
           if (state == 0 and counter == 1):
             INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
-            coord_INDEX_FINGER_TIP_X = int((1 - ISNDEX_FINGER_TIP.x) * config.cap_frame_width)
-            coord_INDEX_FINGER_TIP_Y = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
+            coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
+            coord_INDEX_FINGER_TIP_Y = int((INDEX_FINGER_TIP.y) * config.cap_frame_height)
           if (state == 0 and counter == 2):
             THUMB_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.THUMB_TIP]
             coord_THUMB_TIP_X = int((1 - THUMB_TIP.x) * config.cap_frame_width)
@@ -420,27 +421,29 @@ def gesture_logic(picture_id, Handdetection_results):
           if (state == 1 and counter == 2):
             INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
             coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
-            coord_INDEX_FINGER_TIP_Y = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
-
-
+            coord_INDEX_FINGER_TIP_Y = int((INDEX_FINGER_TIP.y) * config.cap_frame_height)
+ 
+ 
           if (counter == 2):
             if((abs(coord_INDEX_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
               statex = True
             else:
               statex = False
-
+ 
             if((abs(coord_INDEX_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
               statey = True
             else:
               statey = False
-
+ 
             print("State X: ",coord_INDEX_FINGER_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
             print("State Y: ",coord_INDEX_FINGER_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
-
+ 
             if (statex and statey and counter == 2):
               return True
             elif (counter == 2):
               return False
+ 
+ 
     #case 11:
     #case 12:
     #case 13:
