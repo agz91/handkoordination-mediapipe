@@ -4,7 +4,6 @@ print("Importing gesture_logic module...\n")
 
 def gesture_logic(picture_id, Handdetection_results):
   counter = 0
-  print(Handdetection_results.multi_hand_landmarks)
   match picture_id:
     case 1:
       # right: thumb, pinky
@@ -1706,7 +1705,6 @@ def gesture_logic(picture_id, Handdetection_results):
               return True
             elif (counter == 2):
               return False
-
 
 if __name__ == '__main__':
   gesture_logic()
