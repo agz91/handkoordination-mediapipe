@@ -7,11 +7,6 @@ def gesture_logic(picture_id, Handdetection_results):
   match picture_id:
     case 1:
       # right: thumb, pinky
-      PINKY_TIP_compare_X = 1
-      PINKY_compare_Y = 1
-      THUMB_TIP_compare_X = 1
-      THUMB_TIP_compare_Y = 1
-      counter = 0
       if Handdetection_results.multi_hand_landmarks:
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           PINKY_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.PINKY_TIP]
@@ -47,11 +42,6 @@ def gesture_logic(picture_id, Handdetection_results):
       
     case 2:
       #right: thumb, ring
-      RING_FINGER_TIP_compare_X = 1
-      RING_FINGER_compare_Y = 1
-      THUMB_TIP_compare_X = 1
-      THUMB_TIP_compare_Y = 1
-      counter = 0
       if Handdetection_results.multi_hand_landmarks:
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           RING_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.RING_FINGER_TIP]
@@ -87,11 +77,6 @@ def gesture_logic(picture_id, Handdetection_results):
 
     case 3:
       #right: thumb, middle
-      MIDDLE_FINGER_TIP_compare_X = 1
-      MIDDLE_FINGER_compare_Y = 1
-      THUMB_TIP_compare_X = 1
-      THUMB_TIP_compare_Y = 1
-      counter = 0
       if Handdetection_results.multi_hand_landmarks:
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           MIDDLE_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.MIDDLE_FINGER_TIP]
@@ -128,11 +113,6 @@ def gesture_logic(picture_id, Handdetection_results):
 
     case 4:
       #right: thumb, index
-      INDEX_FINGER_TIP_compare_X = 1
-      INDEX_FINGER_TIP_compare_Y = 1
-      THUMB_TIP_compare_X = 1
-      THUMB_TIP_compare_Y = 1
-      counter = 0
       if Handdetection_results.multi_hand_landmarks:
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
@@ -168,11 +148,6 @@ def gesture_logic(picture_id, Handdetection_results):
 
     case 5:
       #left: thumb, index
-      INDEX_FINGER_TIP_compare_X = 1
-      INDEX_FINGER_TIP_compare_Y = 1
-      THUMB_TIP_compare_X = 1
-      THUMB_TIP_compare_Y = 1
-      counter = 0
       if Handdetection_results.multi_hand_landmarks:
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
@@ -208,11 +183,6 @@ def gesture_logic(picture_id, Handdetection_results):
 
     case 6:
       #left: thumb, middle
-      MIDDLE_FINGER_TIP_compare_X = 1
-      MIDDLE_FINGER_compare_Y = 1
-      THUMB_TIP_compare_X = 1
-      THUMB_TIP_compare_Y = 1
-      counter = 0
       if Handdetection_results.multi_hand_landmarks:
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           MIDDLE_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.MIDDLE_FINGER_TIP]
@@ -249,11 +219,6 @@ def gesture_logic(picture_id, Handdetection_results):
       
     case 7:
       #left: thumb, ring
-      RING_FINGER_TIP_compare_X = 1
-      RING_FINGER_compare_Y = 1
-      THUMB_TIP_compare_X = 1
-      THUMB_TIP_compare_Y = 1
-      counter = 0
       if Handdetection_results.multi_hand_landmarks:
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           RING_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.RING_FINGER_TIP]
@@ -289,11 +254,6 @@ def gesture_logic(picture_id, Handdetection_results):
 
     case 8:
       #left: thumb, pinky
-      PINKY_TIP_compare_X = 1
-      PINKY_compare_Y = 1
-      THUMB_TIP_compare_X = 1
-      THUMB_TIP_compare_Y = 1
-      counter = 0
       if Handdetection_results.multi_hand_landmarks:
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           PINKY_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.PINKY_TIP]
@@ -380,10 +340,6 @@ def gesture_logic(picture_id, Handdetection_results):
     case 10:
       #left: thumb
       #right: index
-      # links hat immer index 0
-      # rechts hat immer index 1
-      # reihenfolge in HANDEDNESS ist nicht fix und kommt darauf an, welche hand zuerst im Bild war
-      # position in der liste von HANDEDNESS und Handdetection_results ist immer gleich => linke hand zuerst, linke hand coord. zuerst
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
         print(HANDEDNESS)
