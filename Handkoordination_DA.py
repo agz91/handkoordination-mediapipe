@@ -3,7 +3,7 @@ import time
 import config
 import handdetection 
 from Fenster_Class import Fenster
-import Finger_Class 
+import gesture_logic_v2 
 
 import os
 import sys
@@ -25,11 +25,13 @@ Zeit=pygame.time.Clock() #Zeit definiert
 Timer = 0 # Timer auf 0 gesetzt
 modus_wahl=None #keinModus ausgewählt
 status = False #Status auf falsch gesetzt
+highscores = []  # Liste der Top 5, wird bei jedem Start neu geleert
+
 
 while True:
 
     pygame.display.set_caption("Hand Detection") #Fensterbezeichnung
-    modus_wahl=Fenster.start_screen(F_Weite,F_Hoehe,fenster,Zeit,Schrift,modus_wahl) #Start Fenster öffnen
+    modus_wahl,Spieler_Name=Fenster.start_screen(F_Weite,F_Hoehe,fenster,Zeit,Schrift,modus_wahl) #Start Fenster öffnen
     
     Timer = int(Fenster.Timer_Eingabe)+1 #Timer setzten plus 1s, da beim starten 1s verzögerung vorhanden ist
 
@@ -46,35 +48,12 @@ while True:
                 pygame.quit()
                 exit()    
 
-        if modus_wahl == "rechts":
-            if letzte_nummer == 1:
-                if Finger_Class.THUMB_PINKY_TIP_TOUCH(handdetection.detectHand()) == False:
-                    status = False
-                elif Finger_Class.THUMB_PINKY_TIP_TOUCH(handdetection.detectHand()) == True:
-                    status = True
-            elif letzte_nummer == 2:
-                if Finger_Class.THUMB_RING_TIP_TOUCH(handdetection.detectHand()) == False:
-                    status = False
-                elif Finger_Class.THUMB_RING_TIP_TOUCH(handdetection.detectHand()) == True:
-                    status = True 
-            elif letzte_nummer == 3:
-                if Finger_Class.THUMB_MIDDLE_TIP_TOUCH(handdetection.detectHand()) == False:
-                    status = False
-                elif Finger_Class.THUMB_MIDDLE_TIP_TOUCH(handdetection.detectHand()) == True:
-                    status = True 
-            elif letzte_nummer == 4:
-                if Finger_Class.INDEX_THUMB_TIP_TOUCH(handdetection.detectHand()) == False:
-                    status = False
-                elif Finger_Class.INDEX_THUMB_TIP_TOUCH(handdetection.detectHand()) == True:
-                    status = True
-        elif modus_wahl == "links":
-            print("linke hand")
-        elif modus_wahl == "beide":
-            print("beide Hände")
-        elif modus_wahl == "alle":
-            print("alle")
-        
-        
+        if gesture_logic_v2.gesture_logic(letzte_nummer,handdetection.detectHand()):
+            status=True
+        else:
+            status=False
+
+      
         if status:
             Aufgabe, Aufgabe_rect,letzte_nummer=Fenster.lade_zufaellige_aufgabe(letzte_nummer,modus_wahl)
             punkte +=1
@@ -110,7 +89,7 @@ while True:
 
     pygame.display.set_mode((F_Weite,F_Hoehe))
     pygame.display.set_caption("Hand Detection")
-    aktion = Fenster.end_screen(punkte,F_Weite,F_Hoehe,fenster,Zeit)
+    aktion, highscores = Fenster.end_screen(punkte,F_Weite,F_Hoehe,fenster,Zeit, Spieler_Name, highscores)
     if aktion == "Neustart":
         continue
     else:
