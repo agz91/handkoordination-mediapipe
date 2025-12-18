@@ -342,7 +342,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: index
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -354,9 +353,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
             coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
@@ -398,7 +395,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: middle
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -410,9 +406,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             MIDDLE_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.MIDDLE_FINGER_TIP]
             coord_MIDDLE_FINGER_TIP_X = int((1 - MIDDLE_FINGER_TIP.x) * config.cap_frame_width)
@@ -454,7 +448,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: ring
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -466,9 +459,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             RING_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.RING_FINGER_TIP]
             coord_RING_FINGER_TIP_X = int((1 - RING_FINGER_TIP.x) * config.cap_frame_width)
@@ -510,7 +501,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: pinky
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -522,9 +512,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             PINKY_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.PINKY_TIP]
             coord_PINKY_TIP_X = int((1 - PINKY_TIP.x) * config.cap_frame_width)
@@ -566,7 +554,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: thumb
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -578,9 +565,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             THUMB_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.THUMB_TIP]
             coord_THUMB_TIP_X = int((1 - THUMB_TIP.x) * config.cap_frame_width)
@@ -673,7 +658,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: middle
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -685,9 +669,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             MIDDLE_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.MIDDLE_FINGER_TIP]
             coord_MIDDLE_FINGER_TIP_X = int((1 - MIDDLE_FINGER_TIP.x) * config.cap_frame_width)
@@ -729,7 +711,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: ring
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -741,9 +722,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             RING_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.RING_FINGER_TIP]
             coord_RING_FINGER_TIP_X = int((1 - RING_FINGER_TIP.x) * config.cap_frame_width)
@@ -786,7 +765,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: pinky
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -798,9 +776,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             PINKY_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.PINKY_TIP]
             coord_PINKY_TIP_X = int((1 - PINKY_TIP.x) * config.cap_frame_width)
@@ -842,7 +818,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: thumb
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -854,9 +829,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             THUMB_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.THUMB_TIP]
             coord_THUMB_TIP_X = int((1 - THUMB_TIP.x) * config.cap_frame_width)
@@ -898,7 +871,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: index
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -910,9 +882,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
             coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
@@ -1005,7 +975,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: ring
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1017,8 +986,6 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
  
           if (state == 0 and counter == 1):
             RING_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.RING_FINGER_TIP]
@@ -1061,7 +1028,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: pinky
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1073,9 +1039,7 @@ def gesture_logic(picture_id, Handdetection_results):
 
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             PINKY_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.PINKY_TIP]
             coord_PINKY_TIP_X = int((1 - PINKY_TIP.x) * config.cap_frame_width)
@@ -1117,7 +1081,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: thumb
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1129,9 +1092,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             THUMB_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.THUMB_TIP]
             coord_THUMB_TIP_X = int((1 - THUMB_TIP.x) * config.cap_frame_width)
@@ -1173,7 +1134,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: index
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1185,9 +1145,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
             coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
@@ -1229,7 +1187,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: middle
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1241,9 +1198,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             MIDDLE_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.MIDDLE_FINGER_TIP]
             coord_MIDDLE_FINGER_TIP_X = int((1 - MIDDLE_FINGER_TIP.x) * config.cap_frame_width)
@@ -1336,7 +1291,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: pinky
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1348,9 +1302,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             PINKY_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.PINKY_TIP]
             coord_PINKY_TIP_X = int((1 - PINKY_TIP.x) * config.cap_frame_width)
@@ -1392,7 +1344,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: thumb
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1404,9 +1355,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             THUMB_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.THUMB_TIP]
             coord_THUMB_TIP_X = int((1 - THUMB_TIP.x) * config.cap_frame_width)
@@ -1448,7 +1397,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: index
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1460,9 +1408,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
             coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
@@ -1504,7 +1450,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: middle
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1516,9 +1461,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             MIDDLE_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.MIDDLE_FINGER_TIP]
             coord_MIDDLE_FINGER_TIP_X = int((1 - MIDDLE_FINGER_TIP.x) * config.cap_frame_width)
@@ -1560,7 +1503,6 @@ def gesture_logic(picture_id, Handdetection_results):
       #right: ring
       if Handdetection_results.multi_hand_landmarks:
         HANDEDNESS = str(Handdetection_results.multi_handedness)
-        print(HANDEDNESS)
         HANDEDNESS_length = len(HANDEDNESS)
         HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
         if (HANDEDNESS_length <= 100):
@@ -1572,9 +1514,7 @@ def gesture_logic(picture_id, Handdetection_results):
  
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
           counter += 1
-          print(hand_landmarks)
-          print("END SINGLE HAND")
- 
+
           if (state == 0 and counter == 1):
             RING_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.RING_FINGER_TIP]
             coord_RING_FINGER_TIP_X = int((1 - RING_FINGER_TIP.x) * config.cap_frame_width)

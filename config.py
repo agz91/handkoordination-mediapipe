@@ -20,9 +20,5 @@ def init():
     global cap
     cap = cv2.VideoCapture(0)
 
-
-
-
-
 if __name__ == '__main__':
   init()

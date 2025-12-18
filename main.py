@@ -1,11 +1,5 @@
 import config
 import handdetection
-import extractor
-import index_finger_tip_touch
-import index_thumb_tip_touch
-import thumb_middle_tip_touch
-import thumb_ring_tip_touch
-import thumb_pinky_tip_touch
 import time
 import gesture_logic_v2
 config.init()
