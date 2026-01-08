@@ -1,34 +1,29 @@
+import cv2
 import config
 
 print("Importing Handdetection module...\n")
 
 def cap_init():
 	print("Initializing Cameras...\n")
-	config.cap1.set(config.cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
-	config.cap1.set(config.cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
-	cap_frame_width = config.cap1.get(config.cv2.CAP_PROP_FRAME_WIDTH)
-	cap_frame_height = config.cap1.get(config.cv2.CAP_PROP_FRAME_HEIGHT)
+	cv2.VideoCapture(1).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
+	cv2.VideoCapture(1).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
 
-	config.cap2.set(config.cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
-	config.cap2.set(config.cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
-	cap1_frame_width = config.cap2.get(config.cv2.CAP_PROP_FRAME_WIDTH)
-	cap1_frame_height = config.cap2.get(config.cv2.CAP_PROP_FRAME_HEIGHT)
-	
-	config.cap3.set(config.cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
-	config.cap3.set(config.cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
-	cap2_frame_width = config.cap3.get(config.cv2.CAP_PROP_FRAME_WIDTH)
-	cap2_frame_height = config.cap3.get(config.cv2.CAP_PROP_FRAME_HEIGHT)
+	cv2.VideoCapture(2).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
+	cv2.VideoCapture(2).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
+
+	cv2.VideoCapture(3).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
+	cv2.VideoCapture(3).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
 	print("Camera initialized!\n")
 
-def detectHand(cap_id):
+def detectHand(camera_id):
 	with config.mp_hands.Hands(
 		static_image_mode=False,
 		max_num_hands=2,
 		model_complexity=1,
 		min_detection_confidence=0.5,
 		min_tracking_confidence=0.5) as hands:
-		while config.cap.isOpened():
-			success, image = config.cap[cap_id].read()
+		while cv2.VideoCapture(camera_id).isOpened():
+			success, image = cv2.VideoCapture(camera_id).read()
 			if not success:
 				print("Ignoring empty camera frame.")
 				continue

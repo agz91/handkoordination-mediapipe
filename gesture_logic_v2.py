@@ -2,9 +2,9 @@ import config
 
 print("Importing gesture_logic module...\n")
 
-def gesture_logic(picture_id, Handdetection_results):
+def gesture_logic(gesture_id, Handdetection_results):
 	counter = 0
-	match picture_id:
+	match gesture_id:
 		case 1:
 			# right: thumb, pinky
 			if Handdetection_results.multi_hand_landmarks:

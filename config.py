@@ -16,11 +16,6 @@ def init():
 	global mp_hands
 	mp_hands = mp.solutions.hands
 
-	global cap
-	cap[0] = cv2.VideoCapture(0)
-	cap[1] = cv2.VideoCapture(1)
-	cap[2] = cv2.VideoCapture(2)
-
 	#global gesture_id
 	#gesture_id = [None] * 33
 	#gesture_id[1] = "left"
