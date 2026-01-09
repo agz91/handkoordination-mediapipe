@@ -6,10 +6,10 @@ print("Importing config module...\n")
 def init():
 	print("Initializing global variables...\n")
 	global cap_frame_width
-	cap_frame_width = 1920
+	cap_frame_width = 1280
 
 	global cap_frame_height
-	cap_frame_height = 1080
+	cap_frame_height = 720
 
 	global FINGER_COMPARE_TOLERANCE
 	FINGER_COMPARE_TOLERANCE = 60

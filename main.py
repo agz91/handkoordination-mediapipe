@@ -4,6 +4,7 @@ from camera_id_extractor import get_camera_id
 import time
 from gesture_logic_v2 import gesture_logic
 config.init()
+#handdetection.cap_init()
 
 while True:
 	gesture_id = 1

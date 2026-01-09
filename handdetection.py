@@ -1,6 +1,8 @@
 import cv2
 import config
 
+#add VideoCapture.release() at the end of main.py
+
 print("Importing Handdetection module...\n")
 
 def cap_init():
@@ -13,7 +15,7 @@ def cap_init():
 
 	cv2.VideoCapture(3).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
 	cv2.VideoCapture(3).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
-	print("Camera initialized!\n")
+	print("Cameras initialized!\n")
 
 def detectHand(camera_id):
 	with config.mp_hands.Hands(
@@ -29,8 +31,8 @@ def detectHand(camera_id):
 				continue
 
 			image.flags.writeable = False
-			image = config.cv2.cvtColor(image, config.cv2.COLOR_BGR2RGB)
-			image = config.cv2.flip(image, 1)
+			image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+			image = cv2.flip(image, 1)
 			results = hands.process(image)
 			if results == None:
 				break
