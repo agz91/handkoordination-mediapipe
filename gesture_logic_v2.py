@@ -346,7 +346,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -399,7 +399,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -452,7 +452,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -505,7 +505,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -558,7 +558,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -662,7 +662,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -715,7 +715,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -769,7 +769,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -822,7 +822,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -875,7 +875,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -979,7 +979,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1032,7 +1032,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1085,7 +1085,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1138,7 +1138,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1191,7 +1191,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1295,7 +1295,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1348,7 +1348,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1401,7 +1401,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1454,7 +1454,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
@@ -1507,7 +1507,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				HANDEDNESS_length = len(HANDEDNESS)
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
-					return None
+					return False
 				if (HANDEDNESS_list[0].find("Right") != -1):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):

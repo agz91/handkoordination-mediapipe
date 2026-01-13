@@ -13,8 +13,12 @@ def init():
 
 	global FINGER_COMPARE_TOLERANCE
 	FINGER_COMPARE_TOLERANCE = 60
+
 	global mp_hands
 	mp_hands = mp.solutions.hands
+
+	global cam
+	cam = [cv2.VideoCapture(0), cv2.VideoCapture(2), cv2.VideoCapture(3)]
 
 	#global gesture_id
 	#gesture_id = [None] * 33

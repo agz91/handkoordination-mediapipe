@@ -8,7 +8,7 @@ config.init()
 handdetection.cap_init()
 
 while True:
-	gesture_id = 1
+	gesture_id = 10
 	print(gesture_logic(gesture_id, handdetection.detectHand(get_camera_id(gesture_id))))
 	#extractor.Extractor(handdetection.detectHand())
 	#print(index_finger_tip_touch.INDEX_FINGER_TIP_TOUCH(handdetection.detectHand()))

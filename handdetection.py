@@ -6,8 +6,8 @@ print("Importing Handdetection module...\n")
 def cap_init():
 	print("Initializing Cameras...\n")
 	for x in range(1,3):
-		cv2.VideoCapture(x).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
-		cv2.VideoCapture(x).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
+		config.cam[x].set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
+		config.cam[x].set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
 	print("Cameras initialized!\n")
 
 def detectHand(camera_id):
@@ -18,11 +18,11 @@ def detectHand(camera_id):
 		min_detection_confidence=0.5,
 		min_tracking_confidence=0.5) as hands:
 		print("Opening camera...\n")
-		while cv2.VideoCapture(camera_id).isOpened():
+		while config.cam[camera_id].isOpened():
 			print("Camera opened!\n")
-			
+
 			print("Capturing camera frame...\n")
-			success, image = cv2.VideoCapture(camera_id).read()
+			success, image = config.cam[camera_id].read()
 			print("Capturing camera frame...\n")
 			if success:
 				print("Camera frame captured successfully.\n")
