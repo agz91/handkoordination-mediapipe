@@ -3,6 +3,7 @@ import config
 print("Importing gesture_logic module...\n")
 
 def gesture_logic(gesture_id, Handdetection_results):
+	print("Processing gesture logic for gesture ID:", gesture_id, "\n")
 	counter = 0
 	match gesture_id:
 		case 1:

@@ -3,8 +3,9 @@ import handdetection
 from camera_id_extractor import get_camera_id
 import time
 from gesture_logic_v2 import gesture_logic
+import cv2
 config.init()
-#handdetection.cap_init()
+handdetection.cap_init()
 
 while True:
 	gesture_id = 1
@@ -18,4 +19,4 @@ while True:
 	time.sleep(1)
 
 cv2.destroyAllWindows()
-cap.release()
+cv2.VideoCapturerelease()

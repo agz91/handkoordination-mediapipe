@@ -1,20 +1,13 @@
 import cv2
 import config
 
-#add VideoCapture.release() at the end of main.py
-
 print("Importing Handdetection module...\n")
 
 def cap_init():
 	print("Initializing Cameras...\n")
-	cv2.VideoCapture(1).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
-	cv2.VideoCapture(1).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
-
-	cv2.VideoCapture(2).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
-	cv2.VideoCapture(2).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
-
-	cv2.VideoCapture(3).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
-	cv2.VideoCapture(3).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
+	for x in range(1,3):
+		cv2.VideoCapture(x).set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
+		cv2.VideoCapture(x).set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
 	print("Cameras initialized!\n")
 
 def detectHand(camera_id):
@@ -24,8 +17,15 @@ def detectHand(camera_id):
 		model_complexity=1,
 		min_detection_confidence=0.5,
 		min_tracking_confidence=0.5) as hands:
+		print("Opening camera...\n")
 		while cv2.VideoCapture(camera_id).isOpened():
+			print("Camera opened!\n")
+			
+			print("Capturing camera frame...\n")
 			success, image = cv2.VideoCapture(camera_id).read()
+			print("Capturing camera frame...\n")
+			if success:
+				print("Camera frame captured successfully.\n")
 			if not success:
 				print("Ignoring empty camera frame.")
 				continue
