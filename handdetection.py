@@ -3,13 +3,6 @@ import config
 
 print("Importing Handdetection module...\n")
 
-def cap_init():
-	print("Initializing Cameras...\n")
-	for x in range(1,3):
-		config.cam[x].set(cv2.CAP_PROP_FRAME_WIDTH, config.cap_frame_width)
-		config.cam[x].set(cv2.CAP_PROP_FRAME_HEIGHT, config.cap_frame_height)
-	print("Cameras initialized!\n")
-
 def detectHand(camera_id):
 	with config.mp_hands.Hands(
 		static_image_mode=False,
@@ -39,5 +32,4 @@ def detectHand(camera_id):
 			else: return results
 
 if __name__ == '__main__':
-	cap_init()
 	detectHand()
