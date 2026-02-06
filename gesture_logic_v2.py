@@ -1,30 +1,48 @@
+# ----- import der benötigten biblotheken und module -----
+# konfiguratiuonsmodul mit global verwendeten variablen
 import config
 
 print("Importing gesture_logic module...\n")
 
+# ----- inhalt der funktion -----
+# mitgegeben werden die id der gestik und die resultat liste
 def gesture_logic(gesture_id, Handdetection_results):
 	print("Processing gesture logic for gesture ID:", gesture_id, "\n")
 	counter = 0
+	# verwendet den code, welcher mit der mitgegebenen gestik id
+	# übereinstimmt
 	match gesture_id:
 		case 1:
+			# einhändige gestiken logik
 			# right: thumb, pinky
+			# kontrolliert ob die resultat liste nicht leer ist
 			if Handdetection_results.multi_hand_landmarks:
+				# geht durch alle koordinaten einer liste durch
+				# in diesem fall nur 1 durchgang
 				for hand_landmarks in Handdetection_results.multi_hand_landmarks:
+					# speichert die gesuchten koordinaten und händigkeit
 					PINKY_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.PINKY_TIP]
 					THUMB_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.THUMB_TIP]
 					HANDEDNESS = Handdetection_results.multi_handedness
 					counter += 1
+
+					# rechnet die koordinaten von einer skala von 0-1 auf eine pixel koordinate um
 					coord_PINKY_TIP_X = int((1 - PINKY_TIP.x) * config.cap_frame_width)
 					coord_PINKY_TIP_Y = int(PINKY_TIP.y * config.cap_frame_height)
 					coord_THUMB_TIP_X = int((1 - THUMB_TIP.x) * config.cap_frame_width)
 					coord_THUMB_TIP_Y = int(THUMB_TIP.y * config.cap_frame_height)
 
+					# wandelt die händigkeit liste auf eine string variable um und
+					# bestimmt die länge dieser 
 					HANDEDNESS = str(HANDEDNESS)
 					HANDEDNESS_length = len(HANDEDNESS)
 
+					# falls die händigkeit der hand falsch ist wird sofort False zurückgegebn
 					if HANDEDNESS.find("Right") == -1 and HANDEDNESS.find("Left") != -1:
 						return False
-
+					
+					# subtrahiert die koordinaten beider finger und kontrolliert ob der totale wert
+					# des resultats kleiner ist als der toleranzwert
 					if((abs(coord_PINKY_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
 						statex = True
 					else:
@@ -36,6 +54,8 @@ def gesture_logic(gesture_id, Handdetection_results):
 						statey = False
 					print("State X: ",coord_PINKY_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
 					print("State Y: ",coord_PINKY_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
+
+					# wenn x und y koordinaten beide stimmen wird True zurückgegeben
 					if (statex and statey):
 						return True
 					else:
@@ -289,19 +309,29 @@ def gesture_logic(gesture_id, Handdetection_results):
 						return False
 
 		case 9:
+			# zweihändige gestiken logik mit identem fingern
 			#right: thumb
 			#left: thumb
+			# kontrolliert ob die resultat liste nicht leer ist
 			if Handdetection_results.multi_hand_landmarks:
+				# geht durch alle koordinaten einer liste durch
+				# ein durchgang pro gesuchter hand
 				for hand_landmarks in Handdetection_results.multi_hand_landmarks:
+					# speichert die gesuchten koordinaten und händigkeit
 					THUMB_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.THUMB_TIP]
 					HANDEDNESS = Handdetection_results.multi_handedness 
 					counter += 1
+
+					# rechnet die koordinaten von einer skala von 0-1 auf eine pixel koordinate um
 					coord_THUMB_TIP_X = int((1 - THUMB_TIP.x) * config.cap_frame_width)
 					coord_THUMB_TIP_Y = int(THUMB_TIP.y * config.cap_frame_height)
 
+					# wandelt die händigkeit liste auf eine string variable um und
+					# bestimmt die länge dieser 
 					HANDEDNESS = str(HANDEDNESS)
 					HANDEDNESS_length = len(HANDEDNESS)            
 
+					# bestimmt ob und welche hände erkannt wurden
 					if HANDEDNESS_length >= 100:
 						x = HANDEDNESS.split("}",1)
 						state = 3
@@ -312,6 +342,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 					else:
 						state = 0
 
+					# speichert die koordinaten je nach durchgang in eine extra variable
 					if counter % 2 == 1:
 						THUMB_TIP_compare1_X = coord_THUMB_TIP_X
 						THUMB_TIP_compare1_Y = coord_THUMB_TIP_Y
@@ -319,6 +350,9 @@ def gesture_logic(gesture_id, Handdetection_results):
 						THUMB_TIP_compare2_X = coord_THUMB_TIP_X
 						THUMB_TIP_compare2_Y = coord_THUMB_TIP_Y
 
+					# subtrahiert die koordinaten beider finger und kontrolliert ob der totale wert
+					# des resultats kleiner ist als der toleranzwert
+					# wird nur im zweiten durchgang ausgeführt
 					if (counter % 2 == 0):
 						if((abs(THUMB_TIP_compare1_X-THUMB_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
 							statex = True
@@ -333,17 +367,25 @@ def gesture_logic(gesture_id, Handdetection_results):
 						print("State X: ",THUMB_TIP_compare1_X," - ",THUMB_TIP_compare2_X," = ",statex)
 						print("State Y: ",THUMB_TIP_compare1_Y," - ",THUMB_TIP_compare2_Y," = ",statey)
 
+						# wenn x und y koordinaten beide stimmen und die schleife im zweiten durchgang ist wird True 
+						# zurückgegeben
 						if (statex and statey and counter == 2):
 							return True
 						elif (counter == 2):
 							return False
 
 		case 10:
+			# zweihändige gestiken logik mit unterschiedlichen fingern
 			#left: thumb
 			#right: index
+			# kontrolliert ob die resultat liste nicht leer ist
 			if Handdetection_results.multi_hand_landmarks:
+				# wandelt die händigkeit liste auf eine string variable um und
+				# bestimmt die länge dieser 
 				HANDEDNESS = str(Handdetection_results.multi_handedness)
 				HANDEDNESS_length = len(HANDEDNESS)
+
+				# bestimmt welche hände erkannt wurden
 				HANDEDNESS_list = HANDEDNESS.split( "}" , 1 )
 				if (HANDEDNESS_length <= 100):
 					return False
@@ -351,10 +393,14 @@ def gesture_logic(gesture_id, Handdetection_results):
 					state = 0
 				elif (HANDEDNESS_list[0].find("Left") != -1):
 					state = 1
- 
+
+				# geht durch alle koordinaten einer liste durch
+				# ein durchgang pro gesuchter hand
 				for hand_landmarks in Handdetection_results.multi_hand_landmarks:
 					counter += 1
 
+					# speichert die gesuchten koordinaten und händigkeit
+					# rechnet die koordinaten von einer skala von 0-1 auf eine pixel koordinate um
 					if (state == 0 and counter == 1):
 						INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]
 						coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
@@ -372,6 +418,9 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_INDEX_FINGER_TIP_X = int((1 - INDEX_FINGER_TIP.x) * config.cap_frame_width)
 						coord_INDEX_FINGER_TIP_Y = int((INDEX_FINGER_TIP.y) * config.cap_frame_height)
  
+					# subtrahiert die koordinaten beider finger und kontrolliert ob der totale wert
+					# des resultats kleiner ist als der toleranzwert
+					# wird nur im zweiten durchgang ausgeführt
 					if (counter == 2):
 						if((abs(coord_INDEX_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
 							statex = True
@@ -385,7 +434,9 @@ def gesture_logic(gesture_id, Handdetection_results):
  
 						print("State X: ",coord_INDEX_FINGER_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
 						print("State Y: ",coord_INDEX_FINGER_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
- 
+
+						# wenn x und y koordinaten beide stimmen und die schleife im zweiten durchgang ist wird True 
+						# zurückgegeben
 						if (statex and statey and counter == 2):
 							return True
 						elif (counter == 2):
