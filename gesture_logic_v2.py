@@ -46,12 +46,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 					
 					# subtrahiert die koordinaten beider finger und kontrolliert ob der totale wert
 					# des resultats kleiner ist als der toleranzwert
-					if((abs(coord_PINKY_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_PINKY_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statex = True
 					else:
 						statex = False
 
-					if((abs(coord_PINKY_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_PINKY_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statey = True
 					else:
 						statey = False
@@ -83,16 +83,16 @@ def gesture_logic(gesture_id, Handdetection_results):
 					if HANDEDNESS.find("Right") == -1 and HANDEDNESS.find("Left") != -1:
 						return False
 
-					if((abs(coord_RING_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_RING_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statex = True
 					else:
 						statex = False
 
-					if((abs(coord_RING_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_RING_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statey = True
 					else:
 						statey = False
-					print("State X: ",coord_RING_FINGER_TIP_X," - ",coord_RING_FINGER_TIP_X," = ",statex)
+					print("State X: ",coord_RING_FINGER_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
 					print("State Y: ",coord_RING_FINGER_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
 					if (statex and statey):
 						return True
@@ -119,16 +119,16 @@ def gesture_logic(gesture_id, Handdetection_results):
 					if HANDEDNESS.find("Right") == -1 and HANDEDNESS.find("Left") != -1:
 						return False
 
-					if((abs(coord_MIDDLE_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_MIDDLE_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statex = True
 					else:
 						statex = False
 
-					if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statey = True
 					else:
 						statey = False
-					print("State X: ",coord_MIDDLE_FINGER_TIP_X," - ",coord_MIDDLE_FINGER_TIP_X," = ",statex)
+					print("State X: ",coord_MIDDLE_FINGER_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
 					print("State Y: ",coord_MIDDLE_FINGER_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
 					if (statex and statey):
 						return True
@@ -154,16 +154,16 @@ def gesture_logic(gesture_id, Handdetection_results):
 					if HANDEDNESS.find("Right") == -1 and HANDEDNESS.find("Left") != -1:
 						return False
 
-					if((abs(coord_INDEX_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_INDEX_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statex = True
 					else:
 						statex = False
 
-					if((abs(coord_INDEX_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_INDEX_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statey = True
 					else:
 						statey = False
-					print("State X: ",coord_INDEX_FINGER_TIP_X," - ",coord_INDEX_FINGER_TIP_X," = ",statex)
+					print("State X: ",coord_INDEX_FINGER_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
 					print("State Y: ",coord_INDEX_FINGER_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
 					if (statex and statey):
 						return True
@@ -189,16 +189,16 @@ def gesture_logic(gesture_id, Handdetection_results):
 					if HANDEDNESS.find("Right") != -1 and HANDEDNESS.find("Left") == -1:
 						return False
 
-					if((abs(coord_INDEX_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_INDEX_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statex = True
 					else:
 						statex = False
 
-					if((abs(coord_INDEX_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_INDEX_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statey = True
 					else:
 						statey = False
-					print("State X: ",coord_INDEX_FINGER_TIP_X," - ",coord_INDEX_FINGER_TIP_X," = ",statex)
+					print("State X: ",coord_INDEX_FINGER_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
 					print("State Y: ",coord_INDEX_FINGER_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
 					if (statex and statey):
 						return True
@@ -225,16 +225,16 @@ def gesture_logic(gesture_id, Handdetection_results):
 					if HANDEDNESS.find("Right") != -1 and HANDEDNESS.find("Left") == -1:
 						return False
 
-					if((abs(coord_MIDDLE_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_MIDDLE_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statex = True
 					else:
 						statex = False
 
-					if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statey = True
 					else:
 						statey = False
-					print("State X: ",coord_MIDDLE_FINGER_TIP_X," - ",coord_MIDDLE_FINGER_TIP_X," = ",statex)
+					print("State X: ",coord_MIDDLE_FINGER_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
 					print("State Y: ",coord_MIDDLE_FINGER_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
 					if (statex and statey):
 						return True
@@ -260,16 +260,16 @@ def gesture_logic(gesture_id, Handdetection_results):
 					if HANDEDNESS.find("Right") != -1 and HANDEDNESS.find("Left") == -1:
 						return False
 
-					if((abs(coord_RING_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_RING_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statex = True
 					else:
 						statex = False
 
-					if((abs(coord_RING_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_RING_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statey = True
 					else:
 						statey = False
-					print("State X: ",coord_RING_FINGER_TIP_X," - ",coord_RING_FINGER_TIP_X," = ",statex)
+					print("State X: ",coord_RING_FINGER_TIP_X," - ",coord_THUMB_TIP_X," = ",statex)
 					print("State Y: ",coord_RING_FINGER_TIP_Y," - ",coord_THUMB_TIP_Y," = ",statey)
 					if (statex and statey):
 						return True
@@ -295,12 +295,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 					if HANDEDNESS.find("Right") != -1 and HANDEDNESS.find("Left") == -1:
 						return False
 
-					if((abs(coord_PINKY_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_PINKY_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statex = True
 					else:
 						statex = False
 
-					if((abs(coord_PINKY_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+					if((abs(coord_PINKY_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE):
 						statey = True
 					else:
 						statey = False
@@ -357,12 +357,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 					# des resultats kleiner ist als der toleranzwert
 					# wird nur im zweiten durchgang ausgeführt
 					if (counter % 2 == 0):
-						if((abs(THUMB_TIP_compare1_X-THUMB_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(THUMB_TIP_compare1_X-THUMB_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statex = True
 						else:
 							statex = False
 
-						if((abs(THUMB_TIP_compare1_Y-THUMB_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(THUMB_TIP_compare1_Y-THUMB_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE_SINGLE and state == 3):
 							statey = True
 						else:
 							statey = False
@@ -425,12 +425,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 					# des resultats kleiner ist als der toleranzwert
 					# wird nur im zweiten durchgang ausgeführt
 					if (counter == 2):
-						if((abs(coord_INDEX_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_INDEX_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_INDEX_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_INDEX_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -480,12 +480,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_MIDDLE_FINGER_TIP_Y = int((MIDDLE_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_MIDDLE_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_MIDDLE_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -533,12 +533,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_RING_FINGER_TIP_Y = int((RING_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_RING_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_RING_FINGER_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_RING_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_RING_FINGER_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -586,12 +586,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_PINKY_TIP_Y = int((PINKY_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_PINKY_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_PINKY_TIP_X-coord_THUMB_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_PINKY_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_PINKY_TIP_Y-coord_THUMB_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -639,12 +639,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_THUMB_TIP_Y = int((THUMB_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_THUMB_TIP_X-coord_INDEX_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_THUMB_TIP_X-coord_INDEX_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_THUMB_TIP_Y-coord_INDEX_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_THUMB_TIP_Y-coord_INDEX_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -690,12 +690,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						INDEX_FINGER_TIP_compare2_Y = coord_INDEX_FINGER_TIP_Y
 
 					if (counter % 2 == 0):
-						if((abs(INDEX_FINGER_TIP_compare1_X-INDEX_FINGER_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(INDEX_FINGER_TIP_compare1_X-INDEX_FINGER_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statex = True
 						else:
 							statex = False
 
-						if((abs(INDEX_FINGER_TIP_compare1_Y-INDEX_FINGER_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(INDEX_FINGER_TIP_compare1_Y-INDEX_FINGER_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statey = True
 						else:
 							statey = False
@@ -743,12 +743,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_MIDDLE_FINGER_TIP_Y = int((MIDDLE_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_MIDDLE_FINGER_TIP_X-coord_INDEX_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_MIDDLE_FINGER_TIP_X-coord_INDEX_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_INDEX_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_INDEX_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -796,12 +796,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_RING_FINGER_TIP_Y = int((RING_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_RING_FINGER_TIP_X-coord_INDEX_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_RING_FINGER_TIP_X-coord_INDEX_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_RING_FINGER_TIP_Y-coord_INDEX_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_RING_FINGER_TIP_Y-coord_INDEX_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -850,12 +850,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_PINKY_TIP_Y = int((PINKY_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_PINKY_TIP_X-coord_INDEX_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_PINKY_TIP_X-coord_INDEX_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_PINKY_TIP_Y-coord_INDEX_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_PINKY_TIP_Y-coord_INDEX_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -903,12 +903,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_THUMB_TIP_Y = int((THUMB_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_THUMB_TIP_X-coord_MIDDLE_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_THUMB_TIP_X-coord_MIDDLE_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_THUMB_TIP_Y-coord_MIDDLE_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_THUMB_TIP_Y-coord_MIDDLE_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -956,12 +956,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_INDEX_FINGER_TIP_Y = int((INDEX_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_INDEX_FINGER_TIP_X-coord_MIDDLE_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_INDEX_FINGER_TIP_X-coord_MIDDLE_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_INDEX_FINGER_TIP_Y-coord_MIDDLE_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_INDEX_FINGER_TIP_Y-coord_MIDDLE_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1007,12 +1007,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						MIDDLE_FINGER_TIP_compare2_Y = coord_MIDDLE_FINGER_TIP_Y
 
 					if (counter % 2 == 0):
-						if((abs(MIDDLE_FINGER_TIP_compare1_X-MIDDLE_FINGER_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(MIDDLE_FINGER_TIP_compare1_X-MIDDLE_FINGER_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statex = True
 						else:
 							statex = False
 
-						if((abs(MIDDLE_FINGER_TIP_compare1_Y-MIDDLE_FINGER_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(MIDDLE_FINGER_TIP_compare1_Y-MIDDLE_FINGER_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statey = True
 						else:
 							statey = False
@@ -1060,12 +1060,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_RING_FINGER_TIP_Y = int((RING_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_RING_FINGER_TIP_X-coord_MIDDLE_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_RING_FINGER_TIP_X-coord_MIDDLE_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_RING_FINGER_TIP_Y-coord_MIDDLE_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_RING_FINGER_TIP_Y-coord_MIDDLE_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1113,12 +1113,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_PINKY_TIP_Y = int((PINKY_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_PINKY_TIP_X-coord_MIDDLE_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_PINKY_TIP_X-coord_MIDDLE_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_PINKY_TIP_Y-coord_MIDDLE_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_PINKY_TIP_Y-coord_MIDDLE_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1166,12 +1166,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_THUMB_TIP_Y = int((THUMB_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_THUMB_TIP_X-coord_RING_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_THUMB_TIP_X-coord_RING_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_THUMB_TIP_Y-coord_RING_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_THUMB_TIP_Y-coord_RING_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1219,12 +1219,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_INDEX_FINGER_TIP_Y = int((INDEX_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_INDEX_FINGER_TIP_X-coord_RING_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_INDEX_FINGER_TIP_X-coord_RING_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_INDEX_FINGER_TIP_Y-coord_RING_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_INDEX_FINGER_TIP_Y-coord_RING_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1272,12 +1272,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_MIDDLE_FINGER_TIP_Y = int((MIDDLE_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_MIDDLE_FINGER_TIP_X-coord_RING_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_MIDDLE_FINGER_TIP_X-coord_RING_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_RING_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_RING_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1323,12 +1323,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						RING_FINGER_TIP_compare2_Y = coord_RING_FINGER_TIP_Y
 
 					if (counter % 2 == 0):
-						if((abs(RING_FINGER_TIP_compare1_X-RING_FINGER_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(RING_FINGER_TIP_compare1_X-RING_FINGER_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statex = True
 						else:
 							statex = False
 
-						if((abs(RING_FINGER_TIP_compare1_Y-RING_FINGER_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(RING_FINGER_TIP_compare1_Y-RING_FINGER_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statey = True
 						else:
 							statey = False
@@ -1376,12 +1376,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_PINKY_TIP_Y = int((PINKY_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_PINKY_TIP_X-coord_RING_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_PINKY_TIP_X-coord_RING_FINGER_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_PINKY_TIP_Y-coord_RING_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_PINKY_TIP_Y-coord_RING_FINGER_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1429,12 +1429,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_THUMB_TIP_Y = int((THUMB_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_THUMB_TIP_X-coord_PINKY_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_THUMB_TIP_X-coord_PINKY_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_THUMB_TIP_Y-coord_PINKY_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_THUMB_TIP_Y-coord_PINKY_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1482,12 +1482,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_INDEX_FINGER_TIP_Y = int((INDEX_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_INDEX_FINGER_TIP_X-coord_PINKY_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_INDEX_FINGER_TIP_X-coord_PINKY_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_INDEX_FINGER_TIP_Y-coord_PINKY_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_INDEX_FINGER_TIP_Y-coord_PINKY_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1535,12 +1535,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_MIDDLE_FINGER_TIP_Y = int((MIDDLE_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_MIDDLE_FINGER_TIP_X-coord_PINKY_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_MIDDLE_FINGER_TIP_X-coord_PINKY_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_PINKY_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_MIDDLE_FINGER_TIP_Y-coord_PINKY_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1588,12 +1588,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						coord_RING_FINGER_TIP_Y = int((RING_FINGER_TIP.y) * config.cap_frame_height)
  
 					if (counter == 2):
-						if((abs(coord_RING_FINGER_TIP_X-coord_PINKY_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_RING_FINGER_TIP_X-coord_PINKY_TIP_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statex = True
 						else:
 							statex = False
  
-						if((abs(coord_RING_FINGER_TIP_Y-coord_PINKY_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE):
+						if((abs(coord_RING_FINGER_TIP_Y-coord_PINKY_TIP_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI):
 							statey = True
 						else:
 							statey = False
@@ -1639,12 +1639,12 @@ def gesture_logic(gesture_id, Handdetection_results):
 						PINKY_TIP_compare2_Y = coord_PINKY_TIP_Y
 
 					if (counter % 2 == 0):
-						if((abs(PINKY_TIP_compare1_X-PINKY_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(PINKY_TIP_compare1_X-PINKY_TIP_compare2_X)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statex = True
 						else:
 							statex = False
 
-						if((abs(PINKY_TIP_compare1_Y-PINKY_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE and state == 3):
+						if((abs(PINKY_TIP_compare1_Y-PINKY_TIP_compare2_Y)) <= config.FINGER_COMPARE_TOLERANCE_MULTI and state == 3):
 							statey = True
 						else:
 							statey = False

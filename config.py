@@ -22,8 +22,11 @@ def init():
 	cap_frame_height = 720
 
 	# toleranz für den vergleich der koordinaten
-	global FINGER_COMPARE_TOLERANCE
-	FINGER_COMPARE_TOLERANCE = 60
+	global FINGER_COMPARE_TOLERANCE_MULTI
+	FINGER_COMPARE_TOLERANCE = 40
+
+	global FINGER_COMPARE_TOLERANCE_SINGLE
+	FINGER_COMPARE_TOLERANCE_SINGLE = 20
 
 	# speicherung der funktion als variable zur leserlichkeit
 	global mp_hands
