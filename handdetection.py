@@ -9,6 +9,9 @@ print("Importing Handdetection module...\n")
 # ----- inhalt der funktion -----
 # mitgegeben wird eine id für die zu verwendende kamera
 def detectHand(camera_id):
+	if config.cam[camera_id] is None:
+		print(f"Module handdetection.py: Camera {camera_id} is not initialized.")
+		return None
 	# folgender code wird mit der funktion Hands ausgeführt
 	with config.mp_hands.Hands(
 		# verschiedene einstellungen für das machine learning

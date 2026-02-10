@@ -30,6 +30,10 @@ def find_camera(apiprefference = cv2.CAP_MSMF, cam_id = 0, image = [None, None, 
             else:
                 print(f"Failed to read from camera {cam_id}.")
             cam_id += 1
+        # wenn die kamera nicht erkannt wird, wird eine fehlermeldung ausgegeben und die schleife verlassen
+        else:
+            print(f"Module cam_selector.py: Camera {camera.name} does not match criteria.")
+            break
     # liste mit 3 elementen für die aufgenommenen bilder wird zurück gegeben
     return image
 
