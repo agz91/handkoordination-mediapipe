@@ -10,13 +10,13 @@ def get_camera_id(gesture_id):
     # gibt anhand der mitgegebenen gestik id die zu benutzende
     # kamera id zurück
     if gesture_id in range(1, 5):
-        print ("Right camera selected.\n")
+        print (f"Right camera selected.")
         return 0  # right camera
     elif gesture_id in range(5, 9):
-        print ("Left camera selected.\n")
+        print (f"Left camera selected.")
         return 1  # left camera
     else:
-        print ("Middle camera selected.\n")
+        print (f"Middle camera selected.")
         return 2  # middle camera
 
 # stellt sicher, dass die funktion nur ausgeführt wird, wenn sie

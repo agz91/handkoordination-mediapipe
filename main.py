@@ -31,6 +31,7 @@ while True:
 	#		cv2.destroyAllWindows()
 
 	# gestik id für die zu testende gestik
+	cam_selector.find_camera()
 	gesture_id = 10
 	# druckt die resultate der gesten logik der mitgegebenen gestik in die konsole
 	print(gesture_logic(gesture_id, handdetection.detectHand(get_camera_id(gesture_id))))
