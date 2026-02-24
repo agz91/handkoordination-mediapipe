@@ -312,7 +312,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 						return False
 
 		case 9:
-			# zweihändige gestiken logik mit identem fingern
+			# zweihändige gestiken logik mit identen fingern
 			#right: thumb
 			#left: thumb
 			# kontrolliert ob die resultat liste nicht leer ist
