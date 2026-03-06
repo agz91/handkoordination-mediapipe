@@ -1,6 +1,8 @@
 # ----- import der benötigten biblotheken und module -----
 # biliothek zur erkennung von händen mit bestimmten hand
 # koordinaten
+from difflib import restore
+
 import mediapipe as mp
 # bibliothek für die verwendung der kameras
 import cv2
@@ -37,41 +39,42 @@ def init():
 	cam = [None, None, None]
 
 	# alle gestik ids mit der zugeordneten kamera
-	# global gesture_id
-	# gesture_id = [None] * 33
-	# gesture_id[1] = "left"
-	# gesture_id[2] = "left"
-	# gesture_id[3] = "left"
-	# gesture_id[4] = "left"
-	# gesture_id[5] = "right"
-	# gesture_id[6] = "right"
-	# gesture_id[7] = "right"
-	# gesture_id[8] = "right"
-	# gesture_id[9] = "middle"
-	# gesture_id[10] = "middle"
-	# gesture_id[11] = "middle"
-	# gesture_id[12] = "middle"
-	# gesture_id[13] = "middle"
-	# gesture_id[14] = "middle"
-	# gesture_id[15] = "middle"
-	# gesture_id[16] = "middle"
-	# gesture_id[17] = "middle"
-	# gesture_id[18] = "middle"
-	# gesture_id[19] = "middle"
-	# gesture_id[20] = "middle"
-	# gesture_id[21] = "middle"
-	# gesture_id[22] = "middle"
-	# gesture_id[23] = "middle"
-	# gesture_id[24] = "middle"
-	# gesture_id[25] = "middle"
-	# gesture_id[26] = "middle"
-	# gesture_id[27] = "middle"
-	# gesture_id[28] = "middle"
-	# gesture_id[29] = "middle"
-	# gesture_id[30] = "middle"
-	# gesture_id[31] = "middle"
-	# gesture_id[32] = "middle"
-	# gesture_id[33] = "middle"
+	global gesture
+	gesture = {}
+	gesture[0] = None # wird nicht verwendet, da die gestik ids bei 1 beginnen
+	gesture[1] = {"camera":0, "hand":"Right", "finger0":mp_hands.HandLandmark.PINKY_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[2] = {"camera":0, "hand":"Right", "finger0":mp_hands.HandLandmark.RING_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	#gesture[3] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[4] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[5] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[6] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[7] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[8] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[9] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[10] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[11] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[12] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[13] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[14] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[15] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[16] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[17] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[18] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[19] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[20] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[21] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[22] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[23] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[24] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[25] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[26] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[27] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[28] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[29] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[30] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[31] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[32] = {"camera":, "hand":, "finger0":, "finger1":}
+	#gesture[33] = {"camera":, "hand":, "finger0":, "finger1":}
 
 # stellt sicher, dass die funktion nur ausgeführt wird, wenn sie
 # aus dem hauptprogramm spezifisch aufgerufen wird

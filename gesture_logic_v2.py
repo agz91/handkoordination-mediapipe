@@ -10,7 +10,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 	if Handdetection_results is None:
 		print(f"Module gesture_logic_v2.py: No hand detection results to process.")
 		return None
-	print("Processing gesture logic for gesture ID:", gesture_id, "\n")
+	print(f"Processing gesture logic for gesture ID: {gesture_id}\n")
 	counter = 0
 	# verwendet den code, welcher mit der mitgegebenen gestik id
 	# übereinstimmt
