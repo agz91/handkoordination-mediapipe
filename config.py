@@ -41,40 +41,42 @@ def init():
 	# alle gestik ids mit der zugeordneten kamera
 	global gesture
 	gesture = {}
+	# struktur:
+	# gesture[id] = {"camera":kamera id, "hand":"Right"/"Left"/"Both", "finger0":landmark linke hand, "finger1":landmark rechte hand}
 	gesture[0] = None # wird nicht verwendet, da die gestik ids bei 1 beginnen
 	gesture[1] = {"camera":0, "hand":"Right", "finger0":mp_hands.HandLandmark.PINKY_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
 	gesture[2] = {"camera":0, "hand":"Right", "finger0":mp_hands.HandLandmark.RING_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
-	#gesture[3] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[4] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[5] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[6] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[7] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[8] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[9] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[10] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[11] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[12] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[13] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[14] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[15] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[16] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[17] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[18] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[19] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[20] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[21] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[22] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[23] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[24] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[25] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[26] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[27] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[28] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[29] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[30] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[31] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[32] = {"camera":, "hand":, "finger0":, "finger1":}
-	#gesture[33] = {"camera":, "hand":, "finger0":, "finger1":}
+	gesture[3] = {"camera":0, "hand":"Right", "finger0":mp_hands.HandLandmark.MIDDLE_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[4] = {"camera":0, "hand":"Right", "finger0":mp_hands.HandLandmark.INDEX_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[5] = {"camera":1, "hand":"Left", "finger0":mp_hands.HandLandmark.INDEX_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[6] = {"camera":1, "hand":"Left", "finger0":mp_hands.HandLandmark.MIDDLE_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[7] = {"camera":1, "hand":"Left", "finger0":mp_hands.HandLandmark.RING_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[8] = {"camera":1, "hand":"Left", "finger0":mp_hands.HandLandmark.PINKY_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[9] = {"camera":1, "hand":"Both", "finger0":mp_hands.HandLandmark.THUMB_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[10] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.THUMB_TIP, "finger1":mp_hands.HandLandmark.INDEX_FINGER_TIP}
+	gesture[11] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.THUMB_TIP, "finger1":mp_hands.HandLandmark.MIDDLE_FINGER_TIP}
+	gesture[12] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.THUMB_TIP, "finger1":mp_hands.HandLandmark.RING_FINGER_TIP}
+	gesture[13] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.THUMB_TIP, "finger1":mp_hands.HandLandmark.PINKY_TIP}
+	gesture[14] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.INDEX_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[15] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.INDEX_FINGER_TIP, "finger1":mp_hands.HandLandmark.INDEX_FINGER_TIP}
+	gesture[16] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.INDEX_FINGER_TIP, "finger1":mp_hands.HandLandmark.MIDDLE_FINGER_TIP}
+	gesture[17] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.INDEX_FINGER_TIP, "finger1":mp_hands.HandLandmark.RING_FINGER_TIP}
+	gesture[18] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.INDEX_FINGER_TIP, "finger1":mp_hands.HandLandmark.PINKY_TIP}
+	gesture[19] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.MIDDLE_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[20] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.MIDDLE_FINGER_TIP, "finger1":mp_hands.HandLandmark.INDEX_FINGER_TIP}
+	gesture[21] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.MIDDLE_FINGER_TIP, "finger1":mp_hands.HandLandmark.MIDDLE_FINGER_TIP}
+	gesture[22] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.MIDDLE_FINGER_TIP, "finger1":mp_hands.HandLandmark.RING_FINGER_TIP}
+	gesture[23] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.MIDDLE_FINGER_TIP, "finger1":mp_hands.HandLandmark.PINKY_TIP}
+	gesture[24] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.RING_FINGER_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[25] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.RING_FINGER_TIP, "finger1":mp_hands.HandLandmark.INDEX_FINGER_TIP}
+	gesture[26] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.RING_FINGER_TIP, "finger1":mp_hands.HandLandmark.MIDDLE_FINGER_TIP}
+	gesture[27] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.RING_FINGER_TIP, "finger1":mp_hands.HandLandmark.RING_FINGER_TIP}
+	gesture[28] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.RING_FINGER_TIP, "finger1":mp_hands.HandLandmark.PINKY_TIP}
+	gesture[29] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.PINKY_TIP, "finger1":mp_hands.HandLandmark.THUMB_TIP}
+	gesture[30] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.PINKY_TIP, "finger1":mp_hands.HandLandmark.INDEX_FINGER_TIP}
+	gesture[31] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.PINKY_TIP, "finger1":mp_hands.HandLandmark.MIDDLE_FINGER_TIP}
+	gesture[32] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.PINKY_TIP, "finger1":mp_hands.HandLandmark.RING_FINGER_TIP}
+	gesture[33] = {"camera":2, "hand":"Both", "finger0":mp_hands.HandLandmark.PINKY_TIP, "finger1":mp_hands.HandLandmark.PINKY_TIP}
 
 # stellt sicher, dass die funktion nur ausgeführt wird, wenn sie
 # aus dem hauptprogramm spezifisch aufgerufen wird

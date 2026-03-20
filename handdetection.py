@@ -21,18 +21,14 @@ def detectHand(camera_id):
 		model_complexity=1,
 		min_detection_confidence=0.5,
 		min_tracking_confidence=0.5) as hands:
-		print("Opening camera...\n")
 		# kontrolliert ob die kamera initialisiert wurde
 		while config.cam[camera_id].isOpened():
-			print("Camera opened!\n")
-			
 			# nimmt ein bild auf
 			print("Capturing camera frame...\n")
 			success, image = config.cam[camera_id].read()
-			print("Camera frame captured!\n")
 			# kontrolliert ob bildaufnahme erfolgreich war
 			if success:
-				print("Camera frame captured successfully.\n")
+				print("Camera frame captured successfully!\n")
 			if not success:
 				print("Ignoring empty camera frame.")
 				continue

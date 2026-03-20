@@ -402,7 +402,7 @@ def gesture_logic(gesture_id, Handdetection_results):
 				for hand_landmarks in Handdetection_results.multi_hand_landmarks:
 					counter += 1
 
-					# speichert die gesuchten koordinaten und händigkeit
+					# speicherst die gesuchten koordinaten und händigkeit
 					# rechnet die koordinaten von einer skala von 0-1 auf eine pixel koordinate um
 					if (state == 0 and counter == 1):
 						INDEX_FINGER_TIP = hand_landmarks.landmark[config.mp_hands.HandLandmark.INDEX_FINGER_TIP]

@@ -20,21 +20,11 @@ import time
 from cam_selector_testcam import test_find_camera
 # initialisiert die variablen der konfigurationsdatei
 config.init()
-test_find_camera()
+cam_selector.find_camera()
 
 # ----- inhalt des hauptprogrammes -----
 while True:
-
-	# testet die resultate des cam_selectors
-	#image = cam_selector.find_camera()
-	#for i in range(len(image)):
-	#	if image[i] is not None:
-	#		cv2.imshow("Show Recorded Picture", image[i])
-	#		cv2.waitKey(0)
-	#		cv2.destroyAllWindows()
-
-	#cam_selector.find_camera()
-	id = 1
+	id = 15
 	# druckt die resultate der gesten logik der mitgegebenen gestik in die konsole
 	print(gesture_logic(id, handdetection.detectHand(config.gesture[id]["camera"])))
 	time.sleep(1)

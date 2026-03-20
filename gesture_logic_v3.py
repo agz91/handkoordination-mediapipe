@@ -11,24 +11,112 @@ def gesture_logic(id, Handdetection_results):
         return None
     print(f"Processing gesture logic for gesture ID: {id}\n")
     counter = 0
-    # verwendet den code, welcher mit der mitgegebenen gestik id
-    # übereinstimmt
-    if config.gesture[id]["hand"] == "Right":
+    state_Handedness = [False, False]
+    coord_finger_0 = [0, 0]
+    coord_finger_1 = [0, 0]
+
+    # 1 hand
+    if config.gesture[id]["hand"] == "Right" or config.gesture[id]["hand"] == "Left":
+        if len(Handdetection_results.multi_hand_landmarks) != 1:
+            return False
         for hand_landmarks in Handdetection_results.multi_hand_landmarks:
             finger_0 = hand_landmarks.landmark[config.gesture[id]["finger0"]]
             finger_1 = hand_landmarks.landmark[config.gesture[id]["finger1"]]
             Handedness = Handdetection_results.multi_handedness[counter].classification[0].label
             
-            if Handedness == "Right":
+            if Handedness != config.gesture[id]["hand"]:
                 return False
-            
+
             coord_finger_0 = (
                 int((1 - finger_0.x) * config.cap_frame_width), 
                 int(finger_0.y * config.cap_frame_height))
             coord_finger_1 = (
                 int((1 - finger_1.x) * config.cap_frame_width), 
                 int(finger_1.y * config.cap_frame_height))
-            
+
+            print(f"State X: {coord_finger_0[0]} - {coord_finger_1[0]}")
+            print(f"State Y: {coord_finger_0[1]} - {coord_finger_1[1]}")
+
+            if (abs(coord_finger_0[0] - coord_finger_1[0]) < config.FINGER_COMPARE_TOLERANCE_MULTI and
+                abs(coord_finger_0[1] - coord_finger_1[1]) < config.FINGER_COMPARE_TOLERANCE_MULTI):
+                return True
+            else:
+                return False
+
+    # 2 hands, same finger
+    elif config.gesture[id]["hand"] == "Both":
+        if len(Handdetection_results.multi_hand_landmarks) != 2:
+            return False
+        if config.gesture[id]["finger0"] == config.gesture[id]["finger1"]:
+            for hand_landmarks in Handdetection_results.multi_hand_landmarks:
+                Handedness = Handdetection_results.multi_handedness[counter].classification[0].label
+                counter += 1
+                if Handedness == "Left":
+                    state_Handedness[0] = True
+                    print(f"Left hand recognized.")
+                    print(f"Counter: {counter}")
+                if Handedness == "Right":
+                    state_Handedness[1] = True
+                    print(f"Right hand recognized.")
+                    print(f"Counter: {counter}")
+                if (state_Handedness[0] == False or state_Handedness[1] == False) and counter == 2:
+                    return False
+
+            counter = 0
+
+            for hand_landmarks in Handdetection_results.multi_hand_landmarks:
+                finger = hand_landmarks.landmark[config.gesture[id]["finger0"]]
+                counter += 1
+                if counter == 1:
+                    coord_finger_0 = (
+                        int((1 - finger.x) * config.cap_frame_width),
+                        int(finger.y * config.cap_frame_height))
+                if counter == 2:
+                    coord_finger_1 = (
+                    int((1 - finger.x) * config.cap_frame_width),
+                    int(finger.y * config.cap_frame_height))
+                    
+            print(f"State X: {coord_finger_0[0]} - {coord_finger_1[0]}")
+            print(f"State Y: {coord_finger_0[1]} - {coord_finger_1[1]}")
+
+            if (abs(coord_finger_0[0] - coord_finger_1[0]) < config.FINGER_COMPARE_TOLERANCE_MULTI and
+                abs(coord_finger_0[1] - coord_finger_1[1]) < config.FINGER_COMPARE_TOLERANCE_MULTI):
+                return True
+            else:
+                return False
+
+        # 2 hands, different finger
+        elif config.gesture[id]["finger0"] != config.gesture[id]["finger1"]:
+            Handedness_list = [None] * 2
+            for hand_landmarks in Handdetection_results.multi_hand_landmarks:
+                Handedness_list[counter] = Handdetection_results.multi_handedness[counter].classification[0].label
+                if Handedness_list[counter] == "Left":
+                    state_Handedness[0] = True
+                    print(f"Left hand recognized.")
+                    print(f"Counter: {counter}")
+                elif Handedness_list[counter] == "Right":
+                    state_Handedness[1] = True
+                    print(f"Right hand recognized.")
+                    print(f"Counter: {counter}")
+                if (state_Handedness[0] == False or state_Handedness[1] == False) and counter == 1:
+                    return False
+                counter += 1
+
+            counter = 0
+
+            for hand_landmarks in Handdetection_results.multi_hand_landmarks:
+                if Handedness_list[counter] == "Left":
+                    finger_0 = hand_landmarks.landmark[config.gesture[id]["finger0"]]
+                    coord_finger_0 = (
+                        int((1 - finger_0.x) * config.cap_frame_width),
+                        int(finger_0.y * config.cap_frame_height))
+                if Handedness_list[counter] == "Right":
+                    finger_1 = hand_landmarks.landmark[config.gesture[id]["finger1"]]
+                    coord_finger_1 = (
+                        int((1 - finger_1.x) * config.cap_frame_width),
+                        int(finger_1.y * config.cap_frame_height))
+                counter += 1
+
             print(f"State X: {coord_finger_0[0]} - {coord_finger_1[0]}")
             print(f"State Y: {coord_finger_0[1]} - {coord_finger_1[1]}")
 
